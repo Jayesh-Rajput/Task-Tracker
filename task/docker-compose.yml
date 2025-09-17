@@ -1,0 +1,18 @@
+services:
+  # Our MySQL database
+  db:
+    # The Docker image of mysql -- we're using the latest.
+    image: mysql:8.0  # Instead of mysql:latest
+    # The ports to expose to the host container
+    # 3306 is the default MySQL port
+    ports:
+      - "3306:3306"
+    # If we accidentally kill the running container, Docker Compose
+    # will restart it.
+    restart: always
+    # The MySQL Docker container uses environment variables to
+    # read configuration, here we set the password.
+    # ⚠️ - Do not store plaintext passwords in source control.
+    environment:
+      MYSQL_ROOT_PASSWORD: Jayesh@123
+      MYSQL_DATABASE: taskdb
